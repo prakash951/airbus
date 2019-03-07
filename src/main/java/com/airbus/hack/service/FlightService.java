@@ -18,6 +18,12 @@ public class FlightService {
 	public Response saveFlight(Flight f) {
 		try {
 			Flights myFlights = new Flights();
+			Flights x = myFlightsRepository.findByModel(f.getAirCraftModel());
+			
+			if(x!=null)
+			{
+				myFlights=x;
+			}
 			myFlights.setAirport(f.getAirport());
 			myFlights.setAtmo_pressure(f.getAtmopressure());
 			myFlights.setFc_left_wing(f.getFuelcapacityleftwing());
@@ -30,7 +36,9 @@ public class FlightService {
 			myFlights.setMar(f.getMar());
 			myFlights.setMsn(f.getMsn());
 			myFlights.setRoom_temperature(f.getRoomtemperature());
+			myFlights.setModel(f.getAirCraftModel());
 			myFlightsRepository.save(myFlights);
+			
 			return Response.status(200).entity(f).build();
 		} catch (Exception e) {
 			return Response.status(400).entity("{error: Invalid Request}").build();

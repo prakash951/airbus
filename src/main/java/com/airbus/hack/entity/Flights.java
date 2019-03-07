@@ -120,5 +120,14 @@ public class Flights {
 	private Long fq_right_wing;
 	private Long mar;
 	private String flight_no;
+	private String model;
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
 
 }

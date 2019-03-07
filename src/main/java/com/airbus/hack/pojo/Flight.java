@@ -14,6 +14,15 @@ public class Flight {
 	private Long fuelquantityrightwing;
 	private Long mar;
 	private String flightno;
+	private String airCraftModel;
+
+	public String getAirCraftModel() {
+		return airCraftModel;
+	}
+
+	public void setAirCraftModel(String airCraftModel) {
+		this.airCraftModel = airCraftModel;
+	}
 
 	public Long getMsn() {
 		return msn;
