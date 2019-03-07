@@ -3,79 +3,88 @@
  */
 
 $(document).ready(function() {
-	/*
-	 * var x = "<div id='create'>"
-	 * 
-	 * x = x + '<form id="myForm">'; x = x + '<div class="form-group">'; x = x + '<label
-	 * for="email">MSN:</label>'; x = x + '<input type="text"
-	 * class="form-control" id="msn" placeholder="Enter MSN" name="msn">'; x = x + '</div>';
-	 * x = x + '<div class="form-group">'; x = x + '<label for="pwd">Harness
-	 * Length:</label>'; x = x + '<input type="text" class="form-control"
-	 * id="hlen" placeholder="Enter Harness Length" name="harnesslength">'; x =
-	 * x + '</div>'; x = x + '<div class="form-group">'; x = x + '<label
-	 * for="pwd">Gross Weight:</label>'; x = x + '<input type="text"
-	 * class="form-control" id="gwei" placeholder="Enter Gross Weight"
-	 * name="grossweight">'; x = x + '</div>'; x = x + '<div
-	 * class="form-group">'; x = x + '<label for="pwd">Atmospheric Pressure:</label>';
-	 * x = x + '<input type="text" class="form-control" id="pres"
-	 * placeholder="Enter Atmospheric Pressure" name="atmopressure">'; x = x + '</div>';
-	 * x = x + '<div class="form-group">'; x = x + '<label for="pwd">Room
-	 * Temparature:</label>'; x = x + '<input type="text" class="form-control"
-	 * id="rtemp" placeholder="Enter Room Temparature" name="roomtemperature">';
-	 * x = x + '</div>'; x = x + '<div class="form-group">'; x = x + '<label
-	 * for="pwd">Airport:</label>'; x = x + '<input type="text"
-	 * class="form-control" id="aport" placeholder="Enter Airport"
-	 * name="airport">'; x = x + '</div>'; x = x + '<div class="form-group">';
-	 * x = x + '<label for="pwd">Fuel Capacity on Left Wing:</label>'; x = x + '<input
-	 * type="text" class="form-control" id="fclw" placeholder="Fuel Capacity on
-	 * Left Wing" name="fuelcapacityleftwing">'; x = x + '</div>'; x = x + '<div
-	 * class="form-group">'; x = x + '<label for="pwd">Fuel Capacity on Right
-	 * Wing:</label>'; x = x + '<input type="text" class="form-control"
-	 * id="fcrw" placeholder="Fuel Capacity on Right Wing"
-	 * name="fuelcapacityrightwing">'; x = x + '</div>'; x = x + '<div
-	 * class="form-group">'; x = x + '<label for="pwd">Fuel Quantity on Left
-	 * Wing:</label>'; x = x + '<input type="text" class="form-control"
-	 * id="fqlw" placeholder="Fuel Quantity on Left Wing"
-	 * name="fuelquantityleftwing">'; x = x + '</div>'; x = x + '<div
-	 * class="form-group">'; x = x + '<label for="pwd">Fuel Quantity on Right
-	 * Wing:</label>'; x = x + '<input type="text" class="form-control"
-	 * id="fqrw" placeholder="Fuel Quantity on Right Wing"
-	 * name="fuelquantityrightwing">'; x = x + '</div>'; x = x + '<div
-	 * class="form-group">'; x = x + '<label for="pwd">Minimum Altitude to be
-	 * Reached:</label>'; x = x + '<input type="text" class="form-control"
-	 * id="mcr" placeholder="Minimum Altitude to be Reached" name="mar">'; x = x + '</div>';
-	 * x = x + '<div class="form-group">'; x = x + '<label for="pwd">Flight
-	 * No:</label>'; x = x + '<input type="text" class="form-control" id="fno"
-	 * placeholder="Flight No" name="flightno">'; x = x + '</div>'; x = x + '<button
-	 * class="btn btn-primary" id="submit1">Submit</button>'; x = x + '</form>';
-	 * 
-	 * x = x + "</div>"
-	 */
 	$("#a320").click(function() {
 		$("#content").css({
 			"display" : "block"
 		});
+		$("#search").css({
+			"display" : "none"
+		});
+		$("#hcspan").val("A320 Program");
 		$('#myForm').trigger("reset");
-		$("#model").val("a320");
+		$("#model").val("A320");
 	});
 	$("#a330").click(function() {
 		$("#content").css({
 			"display" : "block"
 		});
+		$("#search").css({
+			"display" : "none"
+		});
+		$("#hcspan").val("A330 Program");
 		$('#myForm').trigger("reset");
-		$("#model").val("a330");
+		$("#model").val("A330");
 	});
 	$("#a350").click(function() {
 		$("#content").css({
 			"display" : "block"
 		});
+		$("#search").css({
+			"display" : "none"
+		});
+		$("#hcspan").val("A350 Program");
 		$('#myForm').trigger("reset");
-		$("#model").val("a350");
+		$("#model").val("A350");
 	});
-	/*
-	 * $("#home").click(function() { $('#myForm').trigger("reset");
-	 * $("#model").val(""); $("#content").css({"display":"none"}); });
-	 */
+	$("#searchandfilter").click(function() {
+		$("#content").css({
+			"display" : "none"
+		});
+		$("#search").css({
+			"display" : "block"
+		});
+		$("#hcspan").val("Search Program");
+		$('#myForm').trigger("reset");
+		$("#model").val("");
+	});
+
+	$("#sb1").click(function() {
+		$('#myForm').trigger("reset");
+		$("#model").val("");
+		$("#content").css({
+			"display" : "none"
+		});
+		var t = '<table class="table">';
+	    t = t+'<thead>';
+	    t = t+'<tr>';
+	    t = t+'<th>MSN</th>';
+	    t = t+'<th>Airport</th>';
+	    t = t+'<th>Flightno</th>';
+	    t = t+'<th>Model</th>';
+	    t = t+'</tr></thead><tbody>';
+	    
+		$.ajax({
+			type : "GET",
+			url : "get/flight/1/10/"+$("#sel1").val(),
+			data : "",
+			success : function(data) {
+				
+				for (i in data.entity) {
+					  t += '<tr>'
+					  t += '<td>'+data.entity[i].msn+'</td>';
+					  t += '<td>'+data.entity[i].airport+'</td>';
+					  t += '<td>'+data.entity[i].flightno+'</td>';
+					  t += '<td>'+data.entity[i].model+'</td>';
+					  t += '</tr>'
+					}
+				t=t+'</tbody></table>';
+				$("#scontent").html(t);
+			},
+			dataType : "json",
+			contentType : "application/json"
+		});
+	});
+
 	$("#submit1").click(function() {
 		var myData1 = $("#myForm").serializeArray();
 		var flag = true;
@@ -88,9 +97,10 @@ $(document).ready(function() {
 			indexed_array[n['name']] = n['value'];
 		});
 		myData = myData + '"airCraftModel":"' + $("#model").val() + '"}';
-		if(!flag){alert("Enter all values");}
-		else{
-		//alert(myData);
+		if (!flag) {
+			alert("Enter all values");
+		} else {
+			// alert(myData);
 			$.ajax({
 				type : "POST",
 				url : "create/flight",

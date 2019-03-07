@@ -24,81 +24,115 @@
 						<button class="btn btn-primary" id="a320">A320</button>
 						<button class="btn btn-primary" id="a330">A330</button>
 						<button class="btn btn-primary" id="a350">A350</button>
-						<button class="btn btn-primary" id="search">Search&Filter</button>
+						<button class="btn btn-primary" id="searchandfilter">Search&Filter</button>
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-8" style="padding-left:50px">
-				<div id="mod">
-					<input type="hidden" id="model">
+			<div class="col-xs-8" style="padding-left: 50px">
+
+				<div class="row">
+					<div id="mod">
+						<input type="hidden" id="model">
+					</div>
+					<div id="headcontent">
+						<h2>
+							<span id="hcspan" style="text-align: center"></span>
+						</h2>
+					</div>
 				</div>
-				<div id="content" style="display:none">
-					<form method="post" onsubmit="return false;" id="myForm" enctype='application/json'>
-						<div class="form-group">
-							<label for="email">MSN:</label> <input type="text"
-								class="form-control" id="msn" placeholder="Enter MSN" name="msn" required>
+				<div class="row">
+					<div id="content" style="display: none">
+						<form method="post" onsubmit="return false;" id="myForm"
+							enctype='application/json'>
+							<div class="form-group">
+								<label for="email">MSN:</label> <input type="text"
+									class="form-control" id="msn" placeholder="Enter MSN"
+									name="msn" required>
+							</div>
+							<div class="form-group">
+								<label for="pwd">Harness Length:</label> <input type="text"
+									class="form-control" id="hlen"
+									placeholder="Enter Harness Length" name="harnesslength"
+									required>
+							</div>
+							<div class="form-group">
+								<label for="pwd">Gross Weight:</label> <input type="text"
+									class="form-control" id="gwei" placeholder="Enter Gross Weight"
+									name="grossweight" required>
+							</div>
+							<div class="form-group">
+								<label for="pwd">Atmospheric Pressure:</label> <input
+									type="text" class="form-control" id="pres"
+									placeholder="Enter Atmospheric Pressure" name="atmopressure"
+									required>
+							</div>
+							<div class="form-group">
+								<label for="pwd">Room Temparature:</label> <input type="text"
+									class="form-control" id="rtemp"
+									placeholder="Enter Room Temparature" name="roomtemperature"
+									required>
+							</div>
+							<div class="form-group">
+								<label for="pwd">Airport:</label> <input type="text"
+									class="form-control" id="aport" placeholder="Enter Airport"
+									name="airport" required>
+							</div>
+							<div class="form-group">
+								<label for="pwd">Fuel Capacity on Left Wing:</label> <input
+									type="text" class="form-control" id="fclw"
+									placeholder="Fuel Capacity on Left Wing"
+									name="fuelcapacityleftwing" required>
+							</div>
+							<div class="form-group">
+								<label for="pwd">Fuel Capacity on Right Wing:</label> <input
+									type="text" class="form-control" id="fcrw"
+									placeholder="Fuel Capacity on Right Wing"
+									name="fuelcapacityrightwing" required>
+							</div>
+							<div class="form-group">
+								<label for="pwd">Fuel Quantity on Left Wing:</label> <input
+									type="text" class="form-control" id="fqlw"
+									placeholder="Fuel Quantity on Left Wing"
+									name="fuelquantityleftwing">
+							</div>
+							<div class="form-group">
+								<label for="pwd">Fuel Quantity on Right Wing:</label> <input
+									type="text" class="form-control" id="fqrw"
+									placeholder="Fuel Quantity on Right Wing"
+									name="fuelquantityrightwing" required>
+							</div>
+							<div class="form-group">
+								<label for="pwd">Minimum Altitude to be Reached:</label> <input
+									type="text" class="form-control" id="mcr"
+									placeholder="Minimum Altitude to be Reached" name="mar"
+									required>
+							</div>
+							<div class="form-group">
+								<label for="pwd">Flight No:</label> <input type="text"
+									class="form-control" id="fno" placeholder="Flight No"
+									name="flightno" required>
+							</div>
+							<button type="submit" class="btn btn-primary" id="submit1">Submit</button>
+						</form>
+					</div>
+				</div>
+				<div class="row">
+
+					<div id="search" style="display: none">
+						<div id="sel" style="padding-bottom:30px">
+							<div class="form-group" >
+								<label for="sel1">Select By Model:</label> <select
+									class="form-control" id="sel1">
+									<option value="A320">A320</option>
+									<option value="A330">A330</option>
+									<option value="A350">A350</option>
+								</select>
+							</div>
+							<button id="sb1">Fetch Details</button>
 						</div>
-						<div class="form-group">
-							<label for="pwd">Harness Length:</label> <input type="text"
-								class="form-control" id="hlen"
-								placeholder="Enter Harness Length" name="harnesslength" required>
+						<div id="scontent">
 						</div>
-						<div class="form-group">
-							<label for="pwd">Gross Weight:</label> <input type="text"
-								class="form-control" id="gwei" placeholder="Enter Gross Weight"
-								name="grossweight" required>
-						</div>
-						<div class="form-group">
-							<label for="pwd">Atmospheric Pressure:</label> <input type="text"
-								class="form-control" id="pres"
-								placeholder="Enter Atmospheric Pressure" name="atmopressure" required>
-						</div>
-						<div class="form-group">
-							<label for="pwd">Room Temparature:</label> <input type="text"
-								class="form-control" id="rtemp"
-								placeholder="Enter Room Temparature" name="roomtemperature" required>
-						</div>
-						<div class="form-group">
-							<label for="pwd">Airport:</label> <input type="text"
-								class="form-control" id="aport" placeholder="Enter Airport"
-								name="airport" required>
-						</div>
-						<div class="form-group">
-							<label for="pwd">Fuel Capacity on Left Wing:</label> <input
-								type="text" class="form-control" id="fclw"
-								placeholder="Fuel Capacity on Left Wing"
-								name="fuelcapacityleftwing" required>
-						</div>
-						<div class="form-group">
-							<label for="pwd">Fuel Capacity on Right Wing:</label> <input
-								type="text" class="form-control" id="fcrw"
-								placeholder="Fuel Capacity on Right Wing"
-								name="fuelcapacityrightwing" required>
-						</div>
-						<div class="form-group">
-							<label for="pwd">Fuel Quantity on Left Wing:</label> <input
-								type="text" class="form-control" id="fqlw"
-								placeholder="Fuel Quantity on Left Wing"
-								name="fuelquantityleftwing">
-						</div>
-						<div class="form-group">
-							<label for="pwd">Fuel Quantity on Right Wing:</label> <input
-								type="text" class="form-control" id="fqrw"
-								placeholder="Fuel Quantity on Right Wing"
-								name="fuelquantityrightwing" required>
-						</div>
-						<div class="form-group">
-							<label for="pwd">Minimum Altitude to be Reached:</label> <input
-								type="text" class="form-control" id="mcr"
-								placeholder="Minimum Altitude to be Reached" name="mar" required>
-						</div>
-						<div class="form-group">
-							<label for="pwd">Flight No:</label> <input type="text"
-								class="form-control" id="fno" placeholder="Flight No"
-								name="flightno" required>
-						</div>
-						<button type="submit" class="btn btn-primary" id="submit1">Submit</button>
-					</form>
+					</div>
 				</div>
 			</div>
 		</div>

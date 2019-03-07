@@ -1,5 +1,6 @@
 package com.airbus.hack.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -100,13 +101,15 @@ public class Flights {
 		this.mar = mar;
 	}
 
-	public String getFlight_no() {
-		return flight_no;
+
+	public String getFlightno() {
+		return flightno;
 	}
 
-	public void setFlight_no(String flight_no) {
-		this.flight_no = flight_no;
+	public void setFlightno(String flightno) {
+		this.flightno = flightno;
 	}
+
 
 	private Long msn;
 	private Long harness_length;
@@ -119,7 +122,8 @@ public class Flights {
 	private Long fq_left_wing;
 	private Long fq_right_wing;
 	private Long mar;
-	private String flight_no;
+	@Column(name = "flight_no", nullable = false)
+	private String flightno;
 	private String model;
 
 	public String getModel() {
